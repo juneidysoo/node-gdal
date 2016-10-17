@@ -302,7 +302,8 @@
 					"link_settings": {
 						"libraries": [
 							"-lws2_32.lib",
-							"-lodbccp32.lib"
+							"-lodbccp32.lib",
+							"-llibpq.lib"
 						]
 					}
 				}]
@@ -317,7 +318,14 @@
 				],
 				"conditions": [
 					["OS == 'win'", {
-						"include_dirs": ["./arch/win"]
+						"include_dirs": ["./arch/win"],
+						"msvs_settings": {
+							"VCLinkerTool": {
+								"AdditionalLibraryDirectories": [
+									"C:/Program Files/PostgreSQL/9.6/lib"
+								]
+							}
+						}
 					}, {
 						"include_dirs": ["./arch/unix"]
 					}],
